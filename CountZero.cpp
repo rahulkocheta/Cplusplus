@@ -3,25 +3,34 @@ using namespace std;
 
 int main()
 {
-    int num,count=0,fact=1,rem;
+    int num,count=0,b;
     cout<<"Enter the number: ";
     cin>>num;
-
-    //Factorial of that number..
-    for(int i=num;i>0;i--)
+    //Counting number of zeros in factorial of the number inputted..
+    if(num>=5)
     {
-        fact=fact*i;
-    }
-
-    //Counting the number of zeros..
-    while(fact>0)
-    {
-        rem=fact%10;
-        if(rem==0)
+        for(int i=5;i<=num;i++)
         {
-            count++;
+            if(i%5==0)
+            {
+                count++;
+                b=i/5;
+                while((b%5)==0)
+                {
+                    count++;
+                    b/=5;
+                }
+            }
         }
-        fact/=10;
     }
+
+    if(count == 0)
+    {
+        cout<<"There are no zeros!";
+    }
+    else
+    {
     cout<<"The number of zeros are: "<<count;
+    }
+    return 0;
 }
